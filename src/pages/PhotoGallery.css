@@ -1,0 +1,387 @@
+.photo-gallery-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffb3d9);
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-gallery-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-title {
+  color: #8b0045;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.gallery-subtitle {
+  color: #d63384;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.love-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 30px;
+  border-radius: 25px;
+  display: inline-flex;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heart-icon {
+  font-size: 1.5rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.message-text {
+  color: #8b0045;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.photo-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.photo-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-placeholder {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-image {
+  transform: scale(1.05);
+}
+
+.photo-emoji {
+  font-size: 4rem;
+  z-index: 2;
+  position: relative;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-overlay {
+  transform: translateY(0);
+}
+
+.photo-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #8b0045;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 182, 193, 0.3);
+}
+
+.modal-photo {
+  width: 100%;
+  height: 500px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.modal-emoji {
+  font-size: 6rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.modal-info {
+  text-align: center;
+}
+
+.modal-title {
+  color: #8b0045;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.modal-description {
+  color: #d63384;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .photo-gallery-container {
+    padding: 30px 15px;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-title {
+    font-size: 2.5rem;
+  }
+  
+  .gallery-subtitle {
+    font-size: 1rem;
+  }
+  
+  .love-message {
+    padding: 12px 25px;
+    gap: 10px;
+  }
+  
+  .message-text {
+    font-size: 1.1rem;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .modal-photo {
+    height: 300px;
+  }
+  
+  .modal-emoji {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-gallery-container {
+    padding: 20px 10px;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+  }
+  
+  .gallery-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .love-message {
+    padding: 10px 20px;
+    gap: 8px;
+    flex-direction: column;
+  }
+  
+  .message-text {
+    font-size: 1rem;
+  }
+  
+  .heart-icon {
+    font-size: 1.2rem;
+  }
+  
+  .modal-content {
+    padding: 15px;
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+  
+  .modal-photo {
+    height: 250px;
+    margin-bottom: 15px;
+  }
+  
+  .modal-emoji {
+    font-size: 3rem;
+  }
+  
+  .close-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .photo-gallery-container {
+    padding: 15px 8px;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+  
+  .gallery-title {
+    font-size: 1.8rem;
+  }
+  
+  .gallery-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .love-message {
+    padding: 8px 15px;
+  }
+  
+  .message-text {
+    font-size: 0.9rem;
+  }
+  
+  .modal-content {
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .modal-photo {
+    height: 200px;
+  }
+  
+  .modal-emoji {
+    font-size: 2.5rem;
+  }
+}
