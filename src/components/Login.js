@@ -6,7 +6,7 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
 
-  const correctPin = '101125';
+  const correctPin = '091125';
 
   const handleNumberClick = (number) => {
     if (pin.length < 6) {
