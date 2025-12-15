@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dayana/static/css/main.7cfd3119.css",
-    "main.js": "/dayana/static/js/main.71642d87.js",
+    "main.js": "/dayana/static/js/main.371c77af.js",
     "static/js/453.e4c3a325.chunk.js": "/dayana/static/js/453.e4c3a325.chunk.js",
     "index.html": "/dayana/index.html",
     "main.7cfd3119.css.map": "/dayana/static/css/main.7cfd3119.css.map",
-    "main.71642d87.js.map": "/dayana/static/js/main.71642d87.js.map",
+    "main.371c77af.js.map": "/dayana/static/js/main.371c77af.js.map",
     "453.e4c3a325.chunk.js.map": "/dayana/static/js/453.e4c3a325.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7cfd3119.css",
-    "static/js/main.71642d87.js"
+    "static/js/main.371c77af.js"
   ]
 }
