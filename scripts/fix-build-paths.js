@@ -31,6 +31,7 @@ const filesToFix = [
   ]},
   { file: 'manifest.json', replacements: [
     { search: '../src/corazon.png', replace: '/dayana/corazon.png' },
+    { search: '"corazon.png"', replace: '"/dayana/corazon.png"' },
     { search: '"logo192.png"', replace: '"/dayana/corazon.png"' },
     { search: '"logo512.png"', replace: '"/dayana/corazon.png"' }
   ]}
