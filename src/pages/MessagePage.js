@@ -5,9 +5,9 @@ const MessagePage = () => {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   
   const loveMessage = `
-Queridisima Pattyy 🥰,
+Queridisima Dayanaaa 🥰,
 
-Cada momento contigo es un regalo que me ayuda en mis malos momentos. Tu voz calma todas mis tormentas. Tus lindos ojos me tiene embobado
+Los momentos que paso contigo son un regalo que me ayuda en mis malos momentos. Tu voz calma todas mis tormentas.
 
 Desde el primer día que te conocí, supe que cambiaras algo en mi . No solo trajiste cariño a mi vida, sino también la certeza de que siempre estaré aquí para protegerte, cuidarte y quererte incondicionalmente.
 

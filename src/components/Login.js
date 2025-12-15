@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 
 const Login = ({ onLogin }) => {
@@ -6,7 +6,7 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
 
-  const correctPin = '290524';
+  const correctPin = '101125';
 
   const handleNumberClick = (number) => {
     if (pin.length < 6) {
@@ -143,7 +143,7 @@ const Login = ({ onLogin }) => {
           
           <div className="login-hint">
             <span className="hint-icon">💡</span>
-            <span className="hint-text">Pista: El dia que te hable por primera vez</span>
+            <span className="hint-text">Pista: Nuestra primera cita</span>
           </div>
         </div>
       </div>

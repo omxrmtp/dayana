@@ -32,7 +32,7 @@
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .music-subtitle {
@@ -119,7 +119,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 5px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .artist-name {
@@ -203,7 +203,7 @@
   font-weight: bold;
   margin-bottom: 15px;
   text-align: center;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .playlist-items {

@@ -32,7 +32,7 @@
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .gallery-subtitle {
@@ -68,7 +68,7 @@
   color: #8b0045;
   font-size: 1.3rem;
   font-weight: bold;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .photo-grid {
@@ -115,6 +115,24 @@
 
 .photo-card:hover .photo-image {
   transform: scale(1.05);
+}
+
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.photo-card:hover .video-play-icon {
+  opacity: 1;
 }
 
 .photo-emoji {
@@ -174,6 +192,15 @@
   width: 90%;
   position: relative;
   animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content.modal-video {
+  max-width: 90vw;
+  width: auto;
+  padding: 20px;
+  max-height: 95vh;
 }
 
 @keyframes slideUp {
@@ -191,22 +218,27 @@
   position: absolute;
   top: 15px;
   right: 20px;
-  background: none;
+  background: rgba(255, 255, 255, 0.9);
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #8b0045;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  padding: 0;
 }
 
 .close-btn:hover {
-  background: rgba(255, 182, 193, 0.3);
+  background: rgba(255, 182, 193, 0.9);
+  transform: scale(1.1);
 }
 
 .modal-photo {
@@ -218,11 +250,28 @@
   justify-content: center;
   margin-bottom: 20px;
   overflow: hidden;
+  background: #000;
+}
+
+.modal-photo-video {
+  height: auto;
+  max-height: 85vh;
+  min-height: 400px;
+  background: #000;
 }
 
 .modal-image {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.modal-video-element {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  min-height: 400px;
   object-fit: contain;
   border-radius: 15px;
 }
@@ -241,7 +290,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Inter', sans-serif;
 }
 
 .modal-description {
@@ -282,13 +331,31 @@
     padding: 20px;
     margin: 20px;
   }
+
+  .modal-content.modal-video {
+    max-width: 95vw;
+    padding: 15px;
+  }
   
   .modal-photo {
     height: 300px;
   }
+
+  .modal-photo-video {
+    max-height: 75vh;
+    min-height: 300px;
+  }
   
   .modal-emoji {
     font-size: 4rem;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
   }
 }
 
@@ -329,10 +396,20 @@
     margin: 10px;
     width: calc(100% - 20px);
   }
+
+  .modal-content.modal-video {
+    max-width: 98vw;
+    padding: 10px;
+  }
   
   .modal-photo {
     height: 250px;
     margin-bottom: 15px;
+  }
+
+  .modal-photo-video {
+    max-height: 70vh;
+    min-height: 250px;
   }
   
   .modal-emoji {
@@ -342,7 +419,14 @@
   .close-btn {
     width: 35px;
     height: 35px;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    top: 8px;
+    right: 12px;
+  }
+
+  .modal-video-element {
+    max-height: 70vh;
+    min-height: 250px;
   }
 }
 

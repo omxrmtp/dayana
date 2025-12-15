@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './MusicPage.css';
 
 const MusicPage = () => {
@@ -10,30 +10,41 @@ const MusicPage = () => {
 
   const playlist = [
     {
-      title: "Donde Nadie Pueda Ir",
-      artist: "Manuel Medrano",
+      id: 1,
+      title: "Birds of a Feather",
+      artist: "Billie Eilish",
       cover: "🎵",
-      src: "/manuel-medrano-donde-nadie-pueda-ir.mp3"
+      src: `${process.env.PUBLIC_URL}/billie-eilish-bird-of-the-father.mp3`
     },
     {
-      title: "Pero Te Conocí",
-      artist: "Reik",
+      id: 2,
+      title: "I Feel It Coming",
+      artist: "The Weeknd",
       cover: "💕",
-      src: "/reik-pero-te-conoci.mp3"
+      src: `${process.env.PUBLIC_URL}/i-feel-it-coming-the-weeknd.mp3`
     },
     {
-      title: "Y sólo se me ocurre amarte",
-      artist: "Alejandro Sanz",
+      id: 3,
+      title: "M.A.I",
+      artist: "Milo J",
       cover: "🎶",
-      src: "/y-solo-se-me-ocurre-amarte.mp3"
+      src: `${process.env.PUBLIC_URL}/milo-j-mai.mp3`
     },
     {
+      id: 4,
       title: "Photograph",
       artist: "Ed Sheeran",
       cover: "📸",
-      src: "/Photograph.mp3"
+      src: `${process.env.PUBLIC_URL}/Photograph.mp3`
     }
   ];
+
+  const nextSong = useCallback(() => {
+    const newSong = (currentSong + 1) % playlist.length;
+    setCurrentSong(newSong);
+    setCurrentTime(0);
+    setIsPlaying(false);
+  }, [currentSong, playlist.length]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -55,7 +66,7 @@ const MusicPage = () => {
         audio.removeEventListener('ended', handleEnded);
       };
     }
-  }, [currentSong]);
+  }, [currentSong, nextSong]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -67,13 +78,6 @@ const MusicPage = () => {
       }
       setIsPlaying(!isPlaying);
     }
-  };
-
-  const nextSong = () => {
-    const newSong = (currentSong + 1) % playlist.length;
-    setCurrentSong(newSong);
-    setCurrentTime(0);
-    setIsPlaying(false);
   };
 
   const prevSong = () => {
