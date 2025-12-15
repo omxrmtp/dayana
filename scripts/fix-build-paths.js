@@ -37,8 +37,23 @@ const filesToFix = [
   ]}
 ];
 
+// Archivos JS en static/js que también necesitan corrección
+const jsFilesToFix = [];
+const staticJsDir = path.join(buildDir, 'static', 'js');
+if (fs.existsSync(staticJsDir)) {
+  const jsFiles = fs.readdirSync(staticJsDir).filter(file => file.endsWith('.js') && !file.endsWith('.map'));
+  jsFiles.forEach(file => {
+    jsFilesToFix.push({ file: path.join('static', 'js', file), replacements: [
+      { search: '"/patty-"', replace: '"/dayana"' },
+      { search: '/patty-/', replace: '/dayana/' },
+      { search: '"/patty-/', replace: '"/dayana/' }
+    ]});
+  });
+}
+
 let fixed = 0;
-filesToFix.forEach(({ file, replacements }) => {
+const allFilesToFix = [...filesToFix, ...jsFilesToFix];
+allFilesToFix.forEach(({ file, replacements }) => {
   const filePath = path.join(buildDir, file);
   if (fs.existsSync(filePath)) {
     let fileFixed = false;
