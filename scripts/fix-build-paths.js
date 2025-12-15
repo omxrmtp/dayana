@@ -22,19 +22,43 @@ function replaceInFile(filePath, search, replace) {
 
 // Archivos a corregir
 const filesToFix = [
-  'index.html',
-  'asset-manifest.json'
+  { file: 'index.html', replacements: [
+    { search: '/patty-/', replace: '/dayana/' },
+    { search: '../src/corazon.png', replace: '/dayana/corazon.png' }
+  ]},
+  { file: 'asset-manifest.json', replacements: [
+    { search: '/patty-/', replace: '/dayana/' }
+  ]},
+  { file: 'manifest.json', replacements: [
+    { search: '../src/corazon.png', replace: '/dayana/corazon.png' },
+    { search: '"logo192.png"', replace: '"/dayana/corazon.png"' },
+    { search: '"logo512.png"', replace: '"/dayana/corazon.png"' }
+  ]}
 ];
 
 let fixed = 0;
-filesToFix.forEach(file => {
+filesToFix.forEach(({ file, replacements }) => {
   const filePath = path.join(buildDir, file);
   if (fs.existsSync(filePath)) {
-    if (replaceInFile(filePath, '/patty-/', '/dayana/')) {
+    let fileFixed = false;
+    replacements.forEach(({ search, replace }) => {
+      if (replaceInFile(filePath, search, replace)) {
+        fileFixed = true;
+      }
+    });
+    if (fileFixed) {
       fixed++;
     }
   }
 });
+
+// Copiar corazon.png al build si no existe
+const srcIcon = path.join(__dirname, '..', 'src', 'corazon.png');
+const buildIcon = path.join(buildDir, 'corazon.png');
+if (fs.existsSync(srcIcon) && !fs.existsSync(buildIcon)) {
+  fs.copyFileSync(srcIcon, buildIcon);
+  console.log(`✓ Copiado: corazon.png al build`);
+}
 
 console.log(`\n✅ Proceso completado. ${fixed} archivo(s) corregido(s).`);
 
